@@ -17,6 +17,9 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Тест скачивания файла с сайта и проверка успешной загрузки.
+ */
 public class DownloadTest {
 
     private WebDriver driver;
@@ -26,23 +29,25 @@ public class DownloadTest {
 
     @BeforeEach
     public void setUp() {
-        // Создание папки загрузок при необходимости
+        // Создаем папку для загрузок, если она не существует
         File downloadsFolder = new File(DOWNLOAD_DIR);
         if (!downloadsFolder.exists()) downloadsFolder.mkdir();
 
-        // Удаление старого файла
+        // Удаляем старый файл, чтобы тест был чистым
         File oldFile = new File(DOWNLOAD_DIR + File.separator + FILE_NAME);
         if (oldFile.exists()) oldFile.delete();
 
-        // Настройка Chrome для автоскачивания
+        // Настраиваем ChromeOptions для автоматической загрузки без диалогов
         ChromeOptions options = new ChromeOptions();
         Map<String, Object> prefs = new HashMap<>();
-        prefs.put("download.default_directory", DOWNLOAD_DIR);
-        prefs.put("download.prompt_for_download", false);
+        prefs.put("download.default_directory", DOWNLOAD_DIR); // папка загрузки
+        prefs.put("download.prompt_for_download", false); // отключаем запрос на скачивание
         options.setExperimentalOption("prefs", prefs);
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+        // Открываем страницу с файлами для скачивания
         driver.get(BASE_URL + "download");
     }
 
@@ -51,19 +56,23 @@ public class DownloadTest {
         DownloadPage page = new DownloadPage(driver);
         DownloadLink fileLink = page.getDownloadLink(FILE_NAME);
 
+        // Кликаем по ссылке для скачивания файла
         fileLink.click();
 
+        // Ожидаем появления файла в папке загрузок (макс 30 сек)
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         boolean isDownloaded = wait.until(d -> {
             File downloadedFile = new File(DOWNLOAD_DIR + File.separator + FILE_NAME);
             return downloadedFile.exists() && downloadedFile.length() > 0;
         });
 
+        // Проверяем, что файл успешно скачался
         assertTrue(isDownloaded, "Файл не был успешно загружен");
     }
 
     @AfterEach
     public void tearDown() {
+        // Закрываем драйвер после теста
         if (driver != null) {
             driver.quit();
         }
