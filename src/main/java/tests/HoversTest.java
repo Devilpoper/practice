@@ -12,7 +12,7 @@ public class HoversTest extends BaseTest {
         driver.get("https://the-internet.herokuapp.com/hovers");
 
         HoversPage hoversPage = new HoversPage(driver);
-        
+
         hoversPage.hoverOnAvatar();
 
         String expected = "name: user1";
