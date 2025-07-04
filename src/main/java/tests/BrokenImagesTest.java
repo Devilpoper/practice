@@ -13,7 +13,7 @@ public class BrokenImagesTest extends BaseTest {
         driver.get("https://the-internet.herokuapp.com/broken_images");
 
         BrokenImagesPage page = new BrokenImagesPage(driver);
-        
+
         // Проверяем, что среди изображений есть хотя бы одно сломанное
         Assertions.assertTrue(page.anyImageBroken(), "Сломанные изображения не обнаружены");
     }

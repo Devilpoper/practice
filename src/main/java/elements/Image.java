@@ -20,6 +20,7 @@ public class Image extends BaseElement {
         super(driver, INDEXED_IMAGE_XPATH, String.valueOf(index));
     }
 
+
     /**
      * Проверяет, сломано ли изображение (naturalWidth === 0 || naturalHeight === 0).
      */
