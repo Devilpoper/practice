@@ -22,13 +22,13 @@ public class Button extends BaseElement {
     private static final int    WAIT_SECONDS      = 10;
 
     /**
-     * Приватный конструктор.
+     * публичный конструктор.
      *
      * @param driver   экземпляр WebDriver
      * @param xpathTpl шаблон XPath
      * @param param    параметр для подстановки в шаблон
      */
-    private Button(WebDriver driver, String xpathTpl, String param) {
+    public Button(WebDriver driver, String xpathTpl, String param) {
         super(driver, xpathTpl, param);
     }
 
