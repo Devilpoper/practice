@@ -21,7 +21,6 @@ public class AddRemovePage extends BasePage {
         // В качестве уникального признака страницы можно взять, например, текст кнопки
         super(driver, "elements");
         this.addElementButton = Button.byXPath(driver, "/html/body/div[2]/div/div/button");
-
     }
 
     /** Функция нажатия на кнопку */
