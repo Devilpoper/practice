@@ -1,11 +1,13 @@
 package tests;
 
-
 import base.BaseTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import pages.BrokenImagesPage;
 
+/**
+ * Проверка наличия сломанных изображений на странице.
+ */
 public class BrokenImagesTest extends BaseTest {
 
     @Test
@@ -14,8 +16,7 @@ public class BrokenImagesTest extends BaseTest {
 
         BrokenImagesPage page = new BrokenImagesPage(driver);
 
-        // Проверяем, что среди изображений есть хотя бы одно сломанное
+        // Проверяем, что хотя бы одно изображение сломано
         Assertions.assertTrue(page.anyImageBroken(), "Сломанные изображения не обнаружены");
     }
 }
-
