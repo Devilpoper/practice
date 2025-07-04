@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Страница с изображениями, в том числе сломанными.
+ * Страница с изображениями, некоторые из которых могут быть сломанными.
  */
 public class BrokenImagesPage extends BasePage {
 
@@ -21,7 +21,8 @@ public class BrokenImagesPage extends BasePage {
     }
 
     /**
-     * Получить список всех изображений на странице в виде объектов Image.
+     * Возвращает все изображения на странице в виде списка объектов Image.
+     * Использует индексы, так как Image работает по порядку элементов в XPath.
      */
     public List<Image> getAllImages() {
         List<WebElement> rawImages = driver.findElements(imagesLocator);
@@ -35,10 +36,11 @@ public class BrokenImagesPage extends BasePage {
     }
 
     /**
-     * Проверяет, есть ли среди изображений сломанные.
+     * Проверяет, есть ли хотя бы одно сломанное изображение.
+     *
+     * @return true — если хотя бы одно изображение не загружено
      */
     public boolean anyImageBroken() {
         return getAllImages().stream().anyMatch(Image::isBroken);
     }
 }
-
