@@ -11,9 +11,10 @@ public class AuthPage extends BasePage {
 
     private final Label successMessage;
     private static final String UNIQUE_TEXT = "Congratulations!";
+    private static final String xpath = "/html/body/div[2]/div/div/p";
 
     public AuthPage(WebDriver driver) {
-        super(driver, "/html/body/div[2]/div/div/p");
+        super(driver, xpath);
         this.successMessage = Label.byPartialText(driver, UNIQUE_TEXT);
     }
 
