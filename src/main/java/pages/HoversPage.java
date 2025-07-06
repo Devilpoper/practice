@@ -1,6 +1,5 @@
 package pages;
 
-import base.BasePage;
 import elements.Label;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

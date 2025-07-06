@@ -1,6 +1,5 @@
 package elements;
 
-import base.BaseElement;
 import org.openqa.selenium.WebDriver;
 
 /**

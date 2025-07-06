@@ -1,6 +1,5 @@
 package pages;
 
-import base.BasePage;
 import elements.Input;
 import org.openqa.selenium.WebDriver;
 

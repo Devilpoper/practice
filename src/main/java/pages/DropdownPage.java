@@ -1,6 +1,5 @@
 package pages;
 
-import base.BasePage;
 import elements.Dropdown;
 import org.openqa.selenium.WebDriver;
 

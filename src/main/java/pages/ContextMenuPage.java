@@ -1,6 +1,5 @@
 package pages;
 
-import base.BasePage;
 import elements.ContextArea;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;

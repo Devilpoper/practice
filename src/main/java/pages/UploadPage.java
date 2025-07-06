@@ -1,6 +1,5 @@
 package pages;
 
-import base.BasePage;
 import elements.Button;
 import elements.Input;
 import elements.Label;
